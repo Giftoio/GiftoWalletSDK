@@ -6,24 +6,24 @@
 * Build-in GUI
   * **Home**
   
- ![Screenshot](https://github.com/rosecoin-io/RosecoinWalletSDK/blob/master/Android/screenshots/screenshot_home.png)
+ ![Screenshot](https://github.com/Giftoio/GiftoWalletSDK/blob/master/Android/screenshots/screenshot_home.png)
   
   * **Create Wallet**
   
- ![Screenshot](https://github.com/rosecoin-io/RosecoinWalletSDK/blob/master/Android/screenshots/screenshot_create.png)
+ ![Screenshot](https://github.com/Giftoio/GiftoWalletSDK/blob/master/Android/screenshots/screenshot_create.png)
   
   * **View Wallet Address**
   
- ![Screenshot](https://github.com/rosecoin-io/RosecoinWalletSDK/blob/master/Android/screenshots/screenshot_address.png)
+ ![Screenshot](https://github.com/Giftoio/GiftoWalletSDK/blob/master/Android/screenshots/screenshot_address.png)
 
   * **Transfer Gifto**
   
- ![Screenshot](https://github.com/rosecoin-io/RosecoinWalletSDK/blob/master/Android/screenshots/screenshot_transfer.png)
+ ![Screenshot](https://github.com/Giftoio/GiftoWalletSDK/blob/master/Android/screenshots/screenshot_transfer.png)
 
   * **View Transaction History**
   
- ![Screenshot](https://github.com/rosecoin-io/RosecoinWalletSDK/blob/master/Android/screenshots/screenshot_history.png)
- ![Screenshot](https://github.com/rosecoin-io/RosecoinWalletSDK/blob/master/Android/screenshots/screenshot_history_detail.png)
+ ![Screenshot](https://github.com/Giftoio/GiftoWalletSDK/blob/master/Android/screenshots/screenshot_history.png)
+ ![Screenshot](https://github.com/Giftoio/GiftoWalletSDK/blob/master/Android/screenshots/screenshot_history_detail.png)
 
 * Supported APIs:
   * **Create Gifto Wallet using identity data and password**
@@ -39,7 +39,7 @@
       repositories {
           //...
           maven {
-              url  "https://dl.bintray.com/rosecoin-io/maven"
+              url  "https://dl.bintray.com/gifto-io/maven"
           }
       }
   }
@@ -47,14 +47,14 @@
 
 * Add the following dependency to your module's build.gradle file:
 ```
-  compile 'io.gifto.wallet:gifto-wallet-sdk:2.0.1'
+  compile 'io.gifto.wallet:gifto-wallet-sdk:2.0.2'
 ```
 
 ### Usage
 * Initial Sdk:
  * **Using your api key and identityData to initial sdk:**
   ```
-   new RoseCoinManager.Builder(yourContext)
+   new GiftoWalletManager.Builder(yourContext)
                 .setApiKey("your-api-key")
                 .setUserIdentityData("your-identity-data")
                 .setUsingStoringPassphrase(true) //default is false if not set
@@ -73,7 +73,7 @@
 * Using Wrapped APIs:
   * **Add the following import into your java class file:**
   ```
-    import io.rosecoin.wallet.networking.RestClient;
+    import io.gifto.wallet.networking.RestClient;
   ```
   * **Using supported APIs**
   ```
@@ -96,18 +96,18 @@
     /**
      * Transfer Coin
      *
-     * @param transferRoseCoinRequest request for transferring coin
+     * @param transferGiftoRequest request for transferring coin
      * @param callback callback for response
      */
-    public static void TransferCoin(final TransferRoseCoinRequest transferRoseCoinRequest, final WalletApiResponseCallback<NoResponse> callback)
+    public static void TransferCoin(final TransferGiftoRequest transferGiftoRequest, final WalletApiResponseCallback<NoResponse> callback)
     
     /**
      * Tip Coin
      *
-     * @param tipRoseCoinRequest request for tipping coin
+     * @param tipGiftoRequest request for tipping coin
      * @param callback callback for response
      */
-    public static void SendGift(final TipRoseCoinRequest tipRoseCoinRequest, final WalletApiResponseCallback<NoResponse> callback)
+    public static void SendGift(final TipGiftoRequest tipGiftoRequest, final WalletApiResponseCallback<NoResponse> callback)
 
     /**
      * Tip coin with Build-in GUI
@@ -122,19 +122,25 @@
     /**
      * Get transaction list
      *
-     * @param getRoseCoinTransactionRequest request for getting transaction list
+     * @param getGiftoTransactionRequest request for getting transaction list
      * @param callback callback for response
      */
-    public static void GetTransactionList(final GetRoseCoinTransactionRequest getRoseCoinTransactionRequest, final WalletApiResponseCallback<List<GetRoseCoinTransactionListResponse>> callback)
+    public static void GetTransactionList(final GetGiftoTransactionRequest getGiftoTransactionRequest, final WalletApiResponseCallback<List<GetGiftoTransactionListResponse>> callback)
   ```
   
 ### Version Information
-  * **Version 2.0.1:**
+  * **Version 2.0.2:**
+    * Refactor "rosecoin" to "gifto"
+    * Change repository from "https://dl.bintray.com/rosecoin-io/maven" to "https://dl.bintray.com/gifto-io/maven"
+    * Change package id from "io.rosecoin.wallet" to "io.gifto.wallet"
+    * Change github repository: https://github.com/Giftoio/GiftoWalletSDK.git
+    
+  * **Version 2.0.1: (https://github.com/rosecoin-io/GiftoWalletSDK/tree/master/Android)**
     * Checking wallet's data before create new wallet
     * Let user use fingerprint to authorize when transfer coin
     * Checking apiKey and identity-data before using SDK (Throw an exception if one is null or empty)
   
-  * **Version 2.0.0:**
+  * **Version 2.0.0: (https://github.com/rosecoin-io/GiftoWalletSDK/tree/master/Android)**
     * Release wallet API v2.0
   
 ## License
