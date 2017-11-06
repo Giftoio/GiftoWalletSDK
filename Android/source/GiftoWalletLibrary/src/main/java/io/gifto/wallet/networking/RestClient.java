@@ -370,7 +370,7 @@ public class RestClient
         tippingGiftoPopup.setToIdentityData(toIdentityData);
         tippingGiftoPopup.setAmount("");
         tippingGiftoPopup.setCallback(callback);
-        tippingGiftoPopup.setAnimationStyle(R.style.GiftoPopupAnimation);
+        tippingGiftoPopup.setAnimationStyle(R.style.GiftoFadePopupAnimation);
         tippingGiftoPopup.setOnDialogTouchOutsideListener(new OnDialogTouchOutsideListener() {
             @Override
             public void onDialogTouchOutside() {
@@ -935,7 +935,7 @@ public class RestClient
         tippingGiftoPopup.setToIdentityData(toIdentityData);
         tippingGiftoPopup.setAmount("");
         tippingGiftoPopup.setResponseCallback(callback);
-        tippingGiftoPopup.setAnimationStyle(R.style.GiftoPopupAnimation);
+        tippingGiftoPopup.setAnimationStyle(R.style.GiftoFadePopupAnimation);
         tippingGiftoPopup.setOnDialogTouchOutsideListener(new OnDialogTouchOutsideListener() {
             @Override
             public void onDialogTouchOutside() {

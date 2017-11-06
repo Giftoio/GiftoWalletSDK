@@ -16,6 +16,7 @@
 
 package io.gifto.wallet.ui.dialog;
 
+import android.annotation.TargetApi;
 import android.app.DialogFragment;
 import android.app.KeyguardManager;
 import android.content.Context;
@@ -70,6 +71,7 @@ import io.gifto.wallet.utils.common.CustomSharedPreferences;
  *
  * Edited by ThongNguyen - 1/11/2017
  */
+@TargetApi(Build.VERSION_CODES.M)
 public class FingerprintAuthenticationDialogFragment extends DialogFragment
         implements TextView.OnEditorActionListener, FingerprintUiHelper.Callback {
 

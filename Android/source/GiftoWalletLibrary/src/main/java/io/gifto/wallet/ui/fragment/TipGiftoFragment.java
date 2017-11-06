@@ -177,7 +177,7 @@ public class TipGiftoFragment extends BaseFragment implements View.OnClickListen
                         }
                     }
                 });
-                passphraseRequirePopup.setAnimationStyle(R.style.GiftoPopupAnimation);
+                passphraseRequirePopup.setAnimationStyle(R.style.GiftoFadePopupAnimation);
                 passphraseRequirePopup.show(btnTransfer);
                 return;
             }

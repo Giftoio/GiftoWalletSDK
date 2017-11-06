@@ -1,5 +1,7 @@
 package io.gifto.wallet.ui.fragment;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import de.greenrobot.event.EventBus;
-import io.gifto.wallet.R;
 import io.gifto.wallet.GiftoWalletManager;
+import io.gifto.wallet.R;
 import io.gifto.wallet.event.OnQRCodeDetectedEvent;
 import io.gifto.wallet.event.OnRefreshGiftoTransactionEvent;
 import io.gifto.wallet.model.TransferFeeType;
@@ -203,7 +205,11 @@ public class TransferGiftoFragment extends BaseFragment implements View.OnClickL
         int id = v.getId();
 
         if (id == R.id.btn_transfer) {
-            TransferV3();
+            {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    TransferV3();
+                else TransferV2();
+            }
         }
         else if (id == R.id.btn_qr_code)
         {
@@ -247,7 +253,7 @@ public class TransferGiftoFragment extends BaseFragment implements View.OnClickL
                         }
                     }
                 });
-                passphraseRequirePopup.setAnimationStyle(R.style.GiftoPopupAnimation);
+                passphraseRequirePopup.setAnimationStyle(R.style.GiftoFadePopupAnimation);
                 passphraseRequirePopup.show(btnTransfer);
                 return;
             }
@@ -376,7 +382,7 @@ public class TransferGiftoFragment extends BaseFragment implements View.OnClickL
                         }
                     }
                 });
-                passphraseRequirePopup.setAnimationStyle(R.style.GiftoPopupAnimation);
+                passphraseRequirePopup.setAnimationStyle(R.style.GiftoFadePopupAnimation);
                 passphraseRequirePopup.show(btnTransfer);
                 return;
             }
@@ -478,6 +484,7 @@ public class TransferGiftoFragment extends BaseFragment implements View.OnClickL
     /**
      * Transfer coin V3 - using fingerprint to authorize
      */
+    @TargetApi(Build.VERSION_CODES.M)
     public void TransferV3()
     {
         if (!ValidateInput())

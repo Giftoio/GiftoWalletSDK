@@ -1,10 +1,12 @@
 package io.gifto.wallet.ui.dialog;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -209,7 +211,11 @@ public class TippingGiftoPopup extends DialogMenu implements View.OnClickListene
 
         int id = v.getId();
         if (id == R.id.btn_tip)
-            TipV3();
+        {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                TipV3();
+            else TipV2();
+        }
     }
 
     @SuppressWarnings("deprecation")
@@ -228,7 +234,7 @@ public class TippingGiftoPopup extends DialogMenu implements View.OnClickListene
         {
             String passphrase = GiftoWalletManager.getUserSecurePassphrase();
 
-            if (true) //(Utils.isStringValid(passphrase))
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M || Utils.isStringValid(passphrase))
             {
                 tvIntro.setText(mContext.getString(R.string.please_enter_amount_to_continue));
                 etPassword.setText(passphrase);
@@ -453,6 +459,7 @@ public class TippingGiftoPopup extends DialogMenu implements View.OnClickListene
     /**
      * Tip coin V3 - using fingerprint to authorize
      */
+    @TargetApi(Build.VERSION_CODES.M)
     private void TipV3()
     {
         if (!ValidateInputs())

@@ -42,4 +42,9 @@
         <item name="@android:windowExitAnimation">@anim/rosecoin_zoom_out</item>
     </style>
 
+    <style name="GiftoFadePopupAnimation">
+        <item name="@android:windowEnterAnimation">@anim/rosecoin_fade_in</item>
+        <item name="@android:windowExitAnimation">@anim/rosecoin_fade_out</item>
+    </style>
+
 </resources>

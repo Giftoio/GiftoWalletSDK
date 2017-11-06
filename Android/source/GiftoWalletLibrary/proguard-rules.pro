@@ -137,6 +137,7 @@
     public static java.lang.String getAuthorization(...);
     public static java.lang.String getUserIdentityData(...);
     public static boolean isUsingStorePassphrase(...);
+    public static void ClearData ();
 }
 -keepparameternames
 -keep class io.gifto.wallet.WalletBuildInGUIBuilder { *; }

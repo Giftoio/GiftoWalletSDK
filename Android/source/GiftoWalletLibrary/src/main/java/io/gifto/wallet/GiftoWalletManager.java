@@ -262,6 +262,20 @@ public class GiftoWalletManager {
             getInstance().userWalletDetail = userWalletDetail;
     }
 
+    public static void ClearData()
+    {
+        if (getInstance() != null)
+        {
+            CustomSharedPreferences.setPreferences(PrefConstants.PREF_AUTHEN_TOKEN, "");
+            CustomSharedPreferences.setPreferences(PrefConstants.PREF_ENCRYPTION_IV, "");
+            CustomSharedPreferences.setPreferences(PrefConstants.PREF_IS_STORE_PASSPHRASE, false);
+            CustomSharedPreferences.setPreferences(PrefConstants.PREF_USE_FINGERPRINT, false);
+            CustomSharedPreferences.setPreferences(PrefConstants.PREF_USER_IDENTITY_DATA, "");
+            CustomSharedPreferences.setPreferences(PrefConstants.PREF_USER_SECURE_PASSPHRASE, "");
+            CustomSharedPreferences.setPreferences(PrefConstants.PREF_USER_WALLET_ADDRESS, "");
+        }
+    }
+
     /**
      * Gifto manager's builder
      */
@@ -328,6 +342,20 @@ public class GiftoWalletManager {
             CustomSharedPreferences.Init(mContext);
 
             GiftoWalletManager.build(apiKey, userIdentityData);
+
+            String packageID = CustomSharedPreferences.getPreferences(PrefConstants.PREF_PACKAGE_ID, "");
+            if (!Utils.isStringValid(packageID) || !packageID.equals(getClass().getPackage().toString()))
+            {
+                CustomSharedPreferences.setPreferences(PrefConstants.PREF_AUTHEN_TOKEN, "");
+                CustomSharedPreferences.setPreferences(PrefConstants.PREF_ENCRYPTION_IV, "");
+                CustomSharedPreferences.setPreferences(PrefConstants.PREF_IS_STORE_PASSPHRASE, false);
+                CustomSharedPreferences.setPreferences(PrefConstants.PREF_USE_FINGERPRINT, false);
+                CustomSharedPreferences.setPreferences(PrefConstants.PREF_USER_IDENTITY_DATA, "");
+                CustomSharedPreferences.setPreferences(PrefConstants.PREF_USER_SECURE_PASSPHRASE, "");
+                CustomSharedPreferences.setPreferences(PrefConstants.PREF_USER_WALLET_ADDRESS, "");
+            }
+
+            CustomSharedPreferences.setPreferences(PrefConstants.PREF_PACKAGE_ID, getClass().getPackage().toString());
 
             CustomSharedPreferences.setPreferences(PrefConstants.PREF_IS_STORE_PASSPHRASE, isStorePassphrase);
 

@@ -12,4 +12,5 @@ public class PrefConstants
     public static final String PREF_IS_STORE_PASSPHRASE = "isStorePassphrase";
     public static final String PREF_USE_FINGERPRINT = "useFingerPrint";
     public static final String PREF_ENCRYPTION_IV = "encryptionIV";
+    public static final String PREF_PACKAGE_ID = "packageID";
 }

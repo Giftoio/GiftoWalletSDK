@@ -16,7 +16,9 @@
 
 package io.gifto.wallet.ui.dialog;
 
+import android.annotation.TargetApi;
 import android.hardware.fingerprint.FingerprintManager;
+import android.os.Build;
 import android.os.CancellationSignal;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +28,7 @@ import io.gifto.wallet.R;
 /**
  * Small helper class to manage text/icon around fingerprint authentication UI.
  */
+@TargetApi(Build.VERSION_CODES.M)
 public class FingerprintUiHelper extends FingerprintManager.AuthenticationCallback {
 
     private static final long ERROR_TIMEOUT_MILLIS = 1600;
