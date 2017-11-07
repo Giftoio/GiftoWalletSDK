@@ -129,6 +129,7 @@
   ```
   
 ### Version Information
+
   * **Version 2.0.3:**
     * Bug fixes
     * Update resources
