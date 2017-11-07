@@ -24,6 +24,7 @@ import com.squareup.picasso.Picasso;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -156,12 +157,13 @@ public class Utils {
 
     public static String FormatAmount(String amount)
     {
-        return new DecimalFormat("#.#####").format(Double.valueOf(amount));
+        double a = Double.valueOf(amount);
+        return new DecimalFormat("#.#####", new DecimalFormatSymbols(Locale.US)).format(a);
     }
 
     public static String FormatAmount(double amount)
     {
-        return new DecimalFormat("#.#####").format(amount);
+        return new DecimalFormat("#.#####", new DecimalFormatSymbols(Locale.US)).format(amount);
     }
 
     public static void forceShowSoftKeyboard(Context context, View view)

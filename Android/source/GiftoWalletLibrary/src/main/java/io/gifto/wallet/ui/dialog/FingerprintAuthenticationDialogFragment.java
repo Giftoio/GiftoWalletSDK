@@ -104,6 +104,23 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
     private KeyGenerator mKeyGenerator;
     private Cipher mCipher;
 
+    private boolean onSaveInstanceState = false;
+    private boolean needToDismiss = false;
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        onSaveInstanceState = true;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (onSaveInstanceState || needToDismiss)
+            dismiss();
+        onSaveInstanceState = false;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -370,13 +387,17 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
                     GiftoWalletManager.setUserSecurePassphrase(mPassword.getText().toString());
                     if (callback != null)
                         callback.onPasswordAuthenticated(mPassword.getText().toString(), PassphraseSource.STORE_PASSPHRASE);
-                    dismiss();
+                    if (onSaveInstanceState)
+                        needToDismiss = true;
+                    else dismiss();
                 }
                 break;
             case PASSWORD: case NO_FINGERPRINT_ENROLLED:
                 if (callback != null)
                     callback.onPasswordAuthenticated(mPassword.getText().toString(), PassphraseSource.USER_INPUT_PASSPHRASE);
-                dismiss();
+            if (onSaveInstanceState)
+                needToDismiss = true;
+            else dismiss();
                 break;
         }
     }
@@ -481,7 +502,9 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
 
                 if (callback != null)
                     callback.onPasswordAuthenticated(mPassword.getText().toString(), PassphraseSource.STORE_PASSPHRASE);
-                dismiss();
+                if (onSaveInstanceState)
+                    needToDismiss = true;
+                else dismiss();
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -498,7 +521,9 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
                     CustomSharedPreferences.setPreferences(PrefConstants.PREF_USE_FINGERPRINT, false);
                     if (callback != null)
                         callback.onPasswordAuthenticated(mPassword.getText().toString(), PassphraseSource.USER_INPUT_PASSPHRASE);
-                    dismiss();
+                    if (onSaveInstanceState)
+                        needToDismiss = true;
+                    else dismiss();
                 }
             }
         }
@@ -511,7 +536,9 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
 
                 if (callback != null)
                     callback.onPasswordAuthenticated(password, PassphraseSource.STORE_PASSPHRASE);
-                dismiss();
+                if (onSaveInstanceState)
+                    needToDismiss = true;
+                else dismiss();
 
             } catch (BadPaddingException | IllegalBlockSizeException | UnsupportedEncodingException e) {
                 e.printStackTrace();
@@ -558,7 +585,9 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
             case NEW_FINGERPRINT_ENROLLED:
                 break;
         }
-        dismiss();
+        if (onSaveInstanceState)
+            needToDismiss = true;
+        else dismiss();
     }
 
     /**

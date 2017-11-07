@@ -53,7 +53,7 @@
             android:layout_marginRight="25dp"
             android:layout_marginTop="10dp"
             android:layout_below="@+id/tv_email_label"
-            android:background="@drawable/background_white_rectangle">
+            android:background="@drawable/background_gifto_white_rectangle">
 
             <ImageView
                 android:id="@+id/icon_email"
@@ -109,7 +109,7 @@
             android:layout_marginRight="25dp"
             android:layout_marginTop="5dp"
             android:layout_below="@+id/tv_firstname_label"
-            android:background="@drawable/background_white_rectangle">
+            android:background="@drawable/background_gifto_white_rectangle">
 
             <ImageView
                 android:id="@+id/icon_firstname"
@@ -166,7 +166,7 @@
             android:layout_marginRight="25dp"
             android:layout_marginTop="5dp"
             android:layout_below="@+id/tv_lastname_label"
-            android:background="@drawable/background_white_rectangle">
+            android:background="@drawable/background_gifto_white_rectangle">
 
             <ImageView
                 android:id="@+id/icon_lastname"
@@ -233,7 +233,7 @@
             android:layout_marginRight="25dp"
             android:layout_marginTop="5dp"
             android:layout_below="@+id/tv_password_label"
-            android:background="@drawable/background_white_rectangle">
+            android:background="@drawable/background_gifto_white_rectangle">
 
             <ImageView
                 android:id="@+id/icon_password"
@@ -299,7 +299,7 @@
             android:layout_marginRight="25dp"
             android:layout_marginTop="5dp"
             android:layout_below="@+id/tv_confirm_password_label"
-            android:background="@drawable/background_white_rectangle">
+            android:background="@drawable/background_gifto_white_rectangle">
 
             <ImageView
                 android:id="@+id/icon_confirm_password"

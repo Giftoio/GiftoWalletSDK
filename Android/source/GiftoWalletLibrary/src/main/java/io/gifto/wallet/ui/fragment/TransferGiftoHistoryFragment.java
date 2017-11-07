@@ -151,6 +151,7 @@ public class TransferGiftoHistoryFragment extends BaseFragment
                                 {
                                     creditHistoryAdapter.notifyDataSetChanged();
                                     lvCreditTransaction.onLoadMoreComplete();
+                                    SweetAlertDialogUtils.DismissSweetDialog();
                                     return null;
                                 }
                             });
